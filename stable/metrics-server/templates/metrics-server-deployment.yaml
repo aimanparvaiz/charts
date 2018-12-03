@@ -25,6 +25,8 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command:
             - /metrics-server
+            - --kubelet-insecure-tls
+            - --kubelet-preferred-address-types=InternalIP            
             {{- range .Values.args }}
             - {{ . | quote }}
             {{- end }}
